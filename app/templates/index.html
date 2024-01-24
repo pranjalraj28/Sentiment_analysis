@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form method="POST" action="/predict">
+        <label for="tweet">Enter a Tweet:</label>
+        <input type="text" id="tweet" name="tweet" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if tweet %}
+        <p>You entered: {{ tweet }}</p>
+    {% endif %}
+    {% if result == 1 %}
+        <p>Result: Positive Sentiment</p>
+    {% elif result == 0 %}
+        <p>Result: Negative Sentiment</p>
+    {% else %}
+        <p></p>
+    {% endif %}
+</body>
+</html>
